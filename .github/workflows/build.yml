@@ -1,0 +1,21 @@
+name: Docker Deploy Webhook
+
+on:
+  push:
+    paths-ignore:
+      - '.sphinx/**'
+      - '.sql/**'
+
+jobs:
+  Build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v1
+    - name: Login to registry
+      run: docker login docker.pkg.github.com -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
+    - name: Build the web image
+      run: |
+        docker build . --file Dockerfile --tag docker.pkg.github.com/matthewbaggett/docker-deploy-webhook
+    - name: Publish web image to Registry
+      run: |
+        docker push docker.pkg.github.com/matthewbaggett/docker-deploy-webhook
