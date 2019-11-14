@@ -15,7 +15,7 @@ jobs:
       run: docker login docker.pkg.github.com -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
     - name: Build the image
       run: |
-        docker build . --file Dockerfile --tag docker.pkg.github.com/matthewbaggett/docker-deploy-webhook
+        docker build . --file Dockerfile --tag docker.pkg.github.com/matthewbaggett/docker-deploy-webhook:latest
     - name: Publish image to Registry
       run: |
-        docker push docker.pkg.github.com/matthewbaggett/docker-deploy-webhook
+        docker push docker.pkg.github.com/matthewbaggett/docker-deploy-webhook:latest
