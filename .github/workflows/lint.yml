@@ -1,7 +1,5 @@
-on:
-  push:
-    branches:
-      - master
+on: [ push ]
+
 name: Lint dockerfiles
 jobs:
   lintDockerFiles:

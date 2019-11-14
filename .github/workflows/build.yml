@@ -1,10 +1,6 @@
 name: Docker Deploy Webhook
 
-on:
-  push:
-    paths-ignore:
-      - '.sphinx/**'
-      - '.sql/**'
+on: [ push ]
 
 jobs:
   Build:
