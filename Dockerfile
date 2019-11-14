@@ -1,5 +1,5 @@
 FROM node:8-alpine
-RUN apk update && apk add docker
+RUN apk --no-cache add docker
 RUN mkdir -p /usr/src/app
 COPY index.js /usr/src/app
 COPY config.json /usr/src/app
