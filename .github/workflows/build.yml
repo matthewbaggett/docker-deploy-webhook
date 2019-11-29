@@ -1,4 +1,4 @@
-name: Docker Deploy Webhook
+name: Build
 
 on: [ push ]
 
@@ -13,7 +13,7 @@ jobs:
         docker login docker.pkg.github.com -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
     - name: Build the image
       run: |
-        docker build . --file Dockerfile --tag
+        docker build . --file Dockerfile --tag deployer
     - name: Tag the image
       run: |
         docker tag deployer matthewbaggett/docker-deploy-webhook:latest
