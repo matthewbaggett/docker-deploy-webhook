@@ -37,7 +37,7 @@ app.post('/webhook/:token', (req, res) => {
 
   if (!services[image]) return console.log(`Received updated for "${image}" but not configured to handle updates for this image.`)
 
-  const services = services[image].services
+  const services = services[image].services;
 
   services.forEach(service => {
     // Make sure we are logged in to be able to pull the image
